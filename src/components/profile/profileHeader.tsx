@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { TechnologyOwner } from '@/libs/types';
 import { FollowButton } from '../ui/followButton';
 
-import { JapaneseYen, TowerControlIcon, LinkIcon, Linkedin } from 'lucide-react'; // Added Linkedin
+import { LinkIcon, } from 'lucide-react'; 
 
 const SocialLink = ({ href, icon: Icon, label }: { href?: string | null, icon: React.ElementType, label?: string }) => {
     if (!href) return null;
