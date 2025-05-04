@@ -25,7 +25,7 @@ const MOCK_TO_PROTOCOL_LABS: TechnologyOwner = {
 };
 
 const MOCK_HACKATHONS_PROTOCOL_LABS: Hackathon[] = [
-  {
+   {
     id: 'hackathon-1',
     organizerName: 'Protocol Labs',
     organizerLogoUrl: '/Project logo.png', 

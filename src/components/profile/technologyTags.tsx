@@ -1,4 +1,4 @@
-// src/components/profile/TechnologyTags.tsx
+
 import { Tag } from '../ui/tag';
 
 interface TechnologyTagsProps {

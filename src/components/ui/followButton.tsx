@@ -1,59 +1,67 @@
 
-'use client';
 
-import React, { useState, useTransition } from 'react';
+'use client';
+import React from 'react'; 
 import { Button } from './button';
-import { followTechnologyOwner, unfollowTechnologyOwner } from '@/libs/api';
-import { UserPlus, UserCheck, Loader2 } from 'lucide-react'; // Import icons
+
+import { Loader2, Check } from 'lucide-react';
 
 interface FollowButtonProps {
-  technologyOwnerId: string;
-  initialIsFollowing: boolean;
-  ownerName: string;
+ 
+  isFollowing: boolean; 
+  isPending: boolean;
+  onFollowToggle: () => void;
+  ownerName: string; 
+  className?: string; 
+  
 }
 
-export function FollowButton({ technologyOwnerId, initialIsFollowing, ownerName }: FollowButtonProps) {
-  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
-  const [isPending, startTransition] = useTransition();
 
-  const handleFollowToggle = () => {
-    startTransition(async () => {
-      const optimisticState = !isFollowing;
-      setIsFollowing(optimisticState);
+export function FollowButton({
+    isFollowing,
+    isPending,
+    onFollowToggle,
+    ownerName,
+    className = '', 
+    
+ }: FollowButtonProps) {
 
-      try {
-        if (optimisticState) {
-          await followTechnologyOwner(technologyOwnerId);
-        } else {
-          await unfollowTechnologyOwner(technologyOwnerId);
-        }
-      } catch (error) {
-        console.error("Failed to update follow status:", error);
-        setIsFollowing(!optimisticState);
-      }
-    });
-  };
+  
 
- 
-  const buttonText = isFollowing ? 'Following' : `Follow ${ownerName}`;
- 
-  const Icon = isFollowing ? UserCheck : UserPlus;
+  const buttonText = isFollowing ? 'Following' : 'Follow';
 
   return (
     <Button
-      variant={isFollowing ? 'outline' : 'primary'} 
-      size="sm"
-      onClick={handleFollowToggle}
-      disabled={isPending}
-     
-      className={`min-w-[110px] flex items-center justify-center gap-1.5 ${isPending ? 'opacity-70 cursor-not-allowed' : ''}`}
+      variant='primary'
+      size="sm" 
+      onClick={onFollowToggle} 
+      disabled={isPending} 
+      className={`
+          min-w-[90px] flex items-center justify-center
+          ${!isFollowing && !isPending ? 'gap-1' : ''}
+          ${isPending ? 'opacity-70 cursor-not-allowed' : ''}
+          h-10 px-4 py-2 text-base // Example override from previous step
+          ${className} // Append any extra classes passed via props
+      `}
+      aria-label={isFollowing ? `Unfollow ${ownerName}` : `Follow ${ownerName}`}
     >
       {isPending ? (
-        <Loader2 className="h-4 w-4 animate-spin" />
-      ) : (
-        <Icon className="h-4 w-4" />
-      )}
-      <span>{isPending ? '...' : buttonText}</span>
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              <span>...</span>
+            </>
+          ) : (
+            <>
+            {!isFollowing ? (
+               
+              <span className="font-medium text-base">+</span>
+            ) : (
+             
+              <Check className="h-4 w-4" /> 
+            )}
+            <span>{buttonText}</span>
+          </>
+          )}
     </Button>
   );
 }

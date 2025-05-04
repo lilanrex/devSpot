@@ -35,7 +35,7 @@ export default function HackathonCard({ hackathon }: HackathonCardProps) {
                 
                 <div className="flex items-center gap-2">
                     <Image
-                        src={hackathon.organizerLogoUrl || "/placeholder-logo.png"} // <<< REPLACE PATH
+                        src={hackathon.organizerLogoUrl || "/placeholder-logo.png"} 
                         alt={`${hackathon.organizerName} logo`}
                         width={48} 
                         height={48}
