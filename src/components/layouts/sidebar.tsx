@@ -17,7 +17,7 @@ export default function Sidebar() {
   
 
   return (
-    <aside className="w-64 p-4 flex flex-col border-r border-gray-700/50 flex-shrink-0 h-screen">
+    <aside className="hidden lg:flex lg:w-64 p-4 flex-col border-r border-gray-700/50 flex-shrink-0 h-screen bg-[#1B1B22]">
        
        <div className="mb-8 px-1"> 
             <Link href="/" aria-label="DevSpot Home"> 
