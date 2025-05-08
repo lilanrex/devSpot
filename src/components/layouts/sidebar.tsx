@@ -32,7 +32,7 @@ export default function Sidebar() {
               href={item.href}
               className={`flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium
                 ${isCurrent
-                  ? 'bg-gradient-to-b from-[#9667FA] to-[#4075FF] text-white'
+                  ? ' from-[#9667FA] to-[#4075FF] text-white'
                   : 'text-gray-400 hover:bg-gray-700/50 hover:text-gray-200' 
                 }`}
             >
