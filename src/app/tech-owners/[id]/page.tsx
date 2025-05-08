@@ -82,8 +82,8 @@ export default function TechnologyOwnerProfilePage() {
     const hasHackathons = hackathons.length > 0;
 
     const renderEmptyHackathonState = () => (
-        <div className="text-center py-6">
-            <p className="text-gray-400 mb-2">
+        <div className="text-center py-6 mx-auto">
+            <p className="text-white mb-2 text-center">
                 {owner.name} hasn't hosted any hackathons yet.
             </p>
             {!currentIsFollowing ? (
