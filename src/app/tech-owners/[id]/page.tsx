@@ -82,7 +82,7 @@ export default function TechnologyOwnerProfilePage() {
     const hasHackathons = hackathons.length > 0;
 
     const renderEmptyHackathonState = () => (
-        <div className="text-center py-6 mx-auto">
+        <div className="text-center py-6 mx-auto  ">
             <p className="text-white mb-2 text-center">
                 {owner.name} hasn't hosted any hackathons yet.
             </p>
@@ -130,7 +130,7 @@ export default function TechnologyOwnerProfilePage() {
               
                 <div
                  
-                  className={` md:w-auto max-w-[276px] md:col-span-3 space-y-4 rounded-xl pt-6 px-0 pb-6 min-h-[500px] ${
+                  className={` md:w-auto  md:col-span-3 space-y-4 rounded-xl pt-6 px-0 pb-6 min-h-[500px] ${
                     activeTab === 'Overview' ? 'block' : 'hidden'
                   }`}
                 
@@ -143,7 +143,7 @@ export default function TechnologyOwnerProfilePage() {
                    
                 </div>
                 
-                <div className={`md:col-span-9 space-y-4 rounded-xl pt-4 pb-4 md:pt-6 md:pb-6 px-0 ${activeTab === 'Hackathons' ? 'md:col-span-12' : 'md:col-span-9'}`}> {/* Example: Expand right column */}
+                <div className={`md:col-span-9 space-y-4 rounded-xl pt-4 pb-4 md:pt-6 md:pb-6 px-0 ${activeTab === 'Hackathons' ? 'md:col-span-12' : 'md:col-span-9'}`}> 
                     <div>
                       
                         {activeTab === 'Overview' && (
