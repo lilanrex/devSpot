@@ -125,17 +125,17 @@ export default function TechnologyOwnerProfilePage() {
             
 
           
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 w-full -mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-4 w-full -mt-2">
 
               
                 <div
                  
-                  className={` md:w-auto max-w-sm md:col-span-1 space-y-4 rounded-xl pt-6 px-0 pb-0 ${
+                  className={` md:w-auto max-w-[276px] md:col-span-3 space-y-4 rounded-xl pt-6 px-0 pb-6 min-h-[500px] ${
                     activeTab === 'Overview' ? 'block' : 'hidden'
                   }`}
                 
                  >
-                   <div className='bg-[#1B1B22] px-6 py-6 rounded-2xl'>
+                   <div className='bg-[#1B1B22]  pb-2 pr-2 rounded-2xl'>
                      <ProfileInfo owner={owner} />
                    </div>
                   
@@ -143,7 +143,7 @@ export default function TechnologyOwnerProfilePage() {
                    
                 </div>
                 
-                <div className={`md:col-span-1 space-y-4 rounded-xl pt-4 pb-4 md:pt-6 md:pb-6 px-0 ${activeTab === 'Hackathons' ? 'md:col-span-3' : 'md:col-span-2'}`}> {/* Example: Expand right column */}
+                <div className={`md:col-span-9 space-y-4 rounded-xl pt-4 pb-4 md:pt-6 md:pb-6 px-0 ${activeTab === 'Hackathons' ? 'md:col-span-12' : 'md:col-span-9'}`}> {/* Example: Expand right column */}
                     <div>
                       
                         {activeTab === 'Overview' && (
@@ -161,10 +161,10 @@ export default function TechnologyOwnerProfilePage() {
                        
                        {activeTab === 'Hackathons' && (
                              <div>
-                                <div className='rounded-xl px-6 py-2 flex flex-col items-start gap-2 self-stretch pl-0'> {/* Applied Figma styles */}
+                                <div className='rounded-xl py-2 flex flex-col items-start gap-2 self-stretch pl-0 pr-2'> 
                                     
                                     {hasHackathons
-                                        ? <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 w-full">
+                                        ? <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 md:gap-6 w-full ">
                                              {hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)}
                                           </div>
                                         : renderEmptyHackathonState()
