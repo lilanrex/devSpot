@@ -10,7 +10,7 @@ import ProfileInfo from '@/components/profile/profileInfo';
 import TechnologyTags from '@/components/profile/technologyTags';
 import AboutSection from '@/components/profile/aboutSection';
 import HackathonCard from '@/components/profile/hackathonCard';
-import { Tabs } from '@/components/ui/tabs';
+//import { Tabs } from '@/components/ui/tabs';
 import { FollowButton } from '@/components/ui/followButton'; 
 
 type ProfileTab = 'Overview' | 'Hackathons';
@@ -67,6 +67,14 @@ export default function TechnologyOwnerProfilePage() {
         });
     };
 
+    const handleTabChange = (tab: string) => {
+       
+        if (tab === 'Overview' || tab === 'Hackathons') {
+            setActiveTab(tab);
+        }
+        
+    };
+
     if (isLoading) return <div>Loading profile...</div>;
     if (error) return <div>Error loading profile: {error}</div>;
     if (!owner) return <div>Technology Owner profile not found.</div>;
@@ -98,32 +106,31 @@ export default function TechnologyOwnerProfilePage() {
             )}
         </div>
       );
-
+      const hackathonSectionContainerClasses = "bg-[#1B1B22] rounded-xl px-6 py-2 flex flex-col items-start gap-2 self-stretch";
 
     return (
-        <div>
-            <ProfileHeader
+        <div >
+            
+             <ProfileHeader
                 owner={owner}
                 isFollowing={currentIsFollowing}
                 isPending={isFollowPending}
                 onFollowToggle={handleFollowToggle}
-            />
+                activeTab={activeTab} 
+                onTabChange={handleTabChange}
+             />
 
-            <div className="my-6">
-                <Tabs
-                    tabs={['Overview', 'Hackathons']}
-                    activeTab={activeTab}
-                    onTabChange={(tab) => setActiveTab(tab as ProfileTab)}
-                />
-            </div>
+             
+            
+            
 
           
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 w-full -mt-2">
 
               
                 <div
                  
-                  className={`md:col-span-1 space-y-4 rounded-xl p-6 ${
+                  className={` md:w-auto max-w-sm md:col-span-1 space-y-4 rounded-xl pt-6 px-0 pb-0 ${
                     activeTab === 'Overview' ? 'block' : 'hidden'
                   }`}
                 
@@ -131,19 +138,19 @@ export default function TechnologyOwnerProfilePage() {
                    <div className='bg-[#1B1B22] px-6 py-6 rounded-2xl'>
                      <ProfileInfo owner={owner} />
                    </div>
-                   <div className='bg-[#1B1B22] px-6 py-6 rounded-2xl'>
+                  
                      <TechnologyTags tags={owner.technologies} />
-                   </div>
+                   
                 </div>
                 
-                <div className={`md:col-span-2 rounded-xl p-6 ${activeTab === 'Hackathons' ? 'md:col-span-3' : 'md:col-span-2'}`}> {/* Example: Expand right column */}
+                <div className={`md:col-span-1 space-y-4 rounded-xl pt-4 pb-4 md:pt-6 md:pb-6 px-0 ${activeTab === 'Hackathons' ? 'md:col-span-3' : 'md:col-span-2'}`}> {/* Example: Expand right column */}
                     <div>
                       
                         {activeTab === 'Overview' && (
-                            <div className="space-y-20">
+                            <div >
                                 <AboutSection description={owner.description} />
-                                <div className='bg-[#1B1B22] rounded-2xl px-6 py-6 '>
-                                    <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Hackathons</h3>
+                                <div className={`${hackathonSectionContainerClasses} mt-4`}>
+                                    <h3 className="text-sm font-semibold text-white mb-1.5 ">Hackathons</h3>
                                     {hasHackathons
                                         ? hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)
                                         : renderEmptyHackathonState()
@@ -152,12 +159,17 @@ export default function TechnologyOwnerProfilePage() {
                             </div>
                         )}
                        
-                        {activeTab === 'Hackathons' && (
+                       {activeTab === 'Hackathons' && (
                              <div>
-                                {hasHackathons
-                                    ? hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)
-                                    : renderEmptyHackathonState()
-                                }
+                                <div className='rounded-xl px-6 py-2 flex flex-col items-start gap-2 self-stretch pl-0'> {/* Applied Figma styles */}
+                                    
+                                    {hasHackathons
+                                        ? <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full">
+                                             {hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)}
+                                          </div>
+                                        : renderEmptyHackathonState()
+                                    }
+                                </div>
                              </div>
                          )}
                     </div>

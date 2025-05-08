@@ -4,7 +4,7 @@
 import React from 'react'; 
 import { Button } from './button';
 
-import { Loader2, Check } from 'lucide-react';
+import { Loader2, Check,Plus } from 'lucide-react';
 
 interface FollowButtonProps {
  
@@ -32,13 +32,13 @@ export function FollowButton({
 
   return (
     <Button
-      variant='primary'
-      size="sm" 
+      variant='primary-gradient'
+      size="md" 
       onClick={onFollowToggle} 
       disabled={isPending} 
       className={`
           min-w-[90px] flex items-center justify-center
-          ${!isFollowing && !isPending ? 'gap-1' : ''}
+          ${!isFollowing && !isPending ? 'gap-1.5' : 'gap-1.5'}
           ${isPending ? 'opacity-70 cursor-not-allowed' : ''}
           h-10 px-4 py-2 text-base // Example override from previous step
           ${className} // Append any extra classes passed via props
@@ -54,12 +54,11 @@ export function FollowButton({
             <>
             {!isFollowing ? (
                
-              <span className="font-medium text-base">+</span>
-            ) : (
-             
-              <Check className="h-4 w-4" /> 
-            )}
-            <span>{buttonText}</span>
+               <Plus className="h-5 w-5" /> 
+              ) : (
+                <Check className="h-4 w-4" /> 
+              )}
+              <span>{buttonText}</span>
           </>
           )}
     </Button>

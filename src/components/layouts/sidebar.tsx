@@ -19,18 +19,7 @@ export default function Sidebar() {
   return (
     <aside className="hidden lg:flex lg:w-64 p-4 flex-col border-r border-gray-700/50 flex-shrink-0 h-screen bg-[#1B1B22]">
        
-       <div className="mb-8 px-1"> 
-            <Link href="/" aria-label="DevSpot Home"> 
-                <Image
-                    src="/White Logo.png"
-                    alt="DevSpot Logo"
-                   
-                    width={120} 
-                    height={30}
-                    priority 
-                />
-            </Link>
-         </div>
+       
 
       <nav className="flex flex-col space-y-2">
         {sidebarItems.map((item) => {
@@ -43,7 +32,7 @@ export default function Sidebar() {
               href={item.href}
               className={`flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium
                 ${isCurrent
-                  ? 'bg-purple-600/20 text-purple-300 border border-purple-500/50' 
+                  ? 'bg-gradient-to-b from-[#9667FA] to-[#4075FF] text-white'
                   : 'text-gray-400 hover:bg-gray-700/50 hover:text-gray-200' 
                 }`}
             >
