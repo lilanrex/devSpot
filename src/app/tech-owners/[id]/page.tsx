@@ -164,7 +164,7 @@ export default function TechnologyOwnerProfilePage() {
                                 <div className='rounded-xl px-6 py-2 flex flex-col items-start gap-2 self-stretch pl-0'> {/* Applied Figma styles */}
                                     
                                     {hasHackathons
-                                        ? <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full">
+                                        ? <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 w-full">
                                              {hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)}
                                           </div>
                                         : renderEmptyHackathonState()
