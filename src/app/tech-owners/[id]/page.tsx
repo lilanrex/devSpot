@@ -164,8 +164,9 @@ export default function TechnologyOwnerProfilePage() {
                                 <div className='rounded-xl py-2 flex flex-col items-start gap-2 self-stretch pl-0 pr-2'> 
                                     
                                     {hasHackathons
-                                        ? <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 md:gap-6 w-full ">
-                                             {hackathons.map(h => <HackathonCard key={h.id} hackathon={h} />)}
+                                        ? <div className="flex flex-col items-start w-full ">
+                                             
+                                             {hackathons.map(h => (<div key={h.id} className='max-w-xs w-full'> <HackathonCard key={h.id} hackathon={h} /> </div>))}
                                           </div>
                                         : renderEmptyHackathonState()
                                     }
